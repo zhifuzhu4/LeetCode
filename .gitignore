@@ -1,0 +1,7 @@
+.git/
+.idea/
+__pycache__/
+temp/
+venv/
+try_ideas.py
+test_solution.py
