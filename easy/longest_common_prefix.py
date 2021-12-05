@@ -17,6 +17,13 @@ Constraints:
 1 <= strs.length <= 200
 0 <= strs[i].length <= 200
 strs[i] consists of only lower-case English letters.
+
+Note: use of min/max
+If the values are strings, the string with the lowest value in alphabetical order is returned.
+min('abcd', 'b') -> 'abcd'
+min(['abcd', 'b']) -> 'abcd'
+
+min(['abcd', 'b'], key=len) -> 'b'
 """
 
 from typing import List
@@ -29,10 +36,10 @@ class Solution:
         # the above two lines just to make the function more efficient.
         # Not essential since it's covered by the code below
 
-        shortest = min(strs)
-        longest = max(strs)
+        lowest = min(strs)
+        highest = max(strs)
 
-        for i, ch in enumerate(shortest):
-            if ch != longest[i]:
-                return shortest[:i]
-        return shortest
+        for i, ch in enumerate(lowest):
+            if ch != highest[i]:
+                return lowest[:i]
+        return lowest
