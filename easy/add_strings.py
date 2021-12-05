@@ -36,5 +36,14 @@ class Solution:
             return rst
         return str(str2int(num1) + str2int(num2))
 
+    def addStrings2(self, num1: str, num2: str) -> str:
+        # ord('x') returns an integer representing the Unicode character
+        def str2int(num):
+            result = 0
+            for n in num:
+                result = result * 10 + ord(n) - ord('0')
+            return result
+        return str(str2int(num1) + str2int(num2))
+
 
 
