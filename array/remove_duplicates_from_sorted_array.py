@@ -41,3 +41,7 @@ class Solution:
                 ind += 1
         print(nums)
         return ind
+
+    def removeDuplicates2(self, nums: List[int]) -> int:
+        nums[:] = sorted(set(nums))
+        return len(nums)
