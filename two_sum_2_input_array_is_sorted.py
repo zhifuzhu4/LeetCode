@@ -33,8 +33,6 @@ The tests are generated such that there is exactly one solution.
 
 Note:
     3 solutions: dictionary, two pointers, binary search
-
-TODO: add binary search solution
 """
 
 from typing import List
@@ -59,3 +57,17 @@ class Solution:
                 left += 1
             else:
                 right -= 1
+
+    def twoSum3(self, numbers: List[int], target: int) -> List[int]:
+        # binary search has O(nlogn) complexity, and it's confusing.
+        for i in range(len(numbers)):
+            left, right = i + 1, len(numbers) - 1
+            diff = target - numbers[i]
+            while left <= right:
+                mid = left + (right - left) // 2
+                if numbers[mid] == diff:
+                    return [i+1, mid+1]
+                elif numbers[mid] > diff:
+                    right = mid - 1
+                else:
+                    left = mid + 1

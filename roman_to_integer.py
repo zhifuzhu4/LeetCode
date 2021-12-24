@@ -53,10 +53,22 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 class Solution:
     def romanToInt(self, s: str) -> int:
         roman = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
-        z = 0
+        num = 0
         for i in range(0, len(s) - 1):
             if roman[s[i]] < roman[s[i+1]]:
-                z -= roman[s[i]]
+                num -= roman[s[i]]
             else:
-                z += roman[s[i]]
-        return z + roman[s[-1]]
+                num += roman[s[i]]
+        return num + roman[s[-1]]
+
+    def romanToInt2(self, s: str) -> int:
+        roman = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
+        new_roman = {'IV': 'IIII', 'IX': 'VIIII', 'XL': 'XXXX', 'XC': 'LXXXX', 'CD': 'CCCC', 'CM': 'DCCCC'}
+        for key, value in new_roman.items():
+            s = s.replace(key, value)
+
+        total = 0
+        for x in s:
+            total += roman[x]
+        return total
+
