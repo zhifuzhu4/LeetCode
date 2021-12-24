@@ -25,12 +25,21 @@ Constraints:
 1 <= s.length <= 104
 s consists of only English letters and spaces ' '.
 There will be at least one word in s.
+
+Note:
+    begin_idx >= 0, >= to include single letter inputs, like 'a'
 """
 
 
-# TODO: solution without using split()
-
-
 class Solution:
-    def lengthOfLastWord(self, s: str) -> bool:
+    def lengthOfLastWord(self, s: str) -> int:
         return len(s.split()[-1])
+
+    def lengthOfLastWord2(self, s: str) -> int:
+        end_idx = len(s) - 1
+        while end_idx > 0 and s[end_idx] == ' ':
+            end_idx -= 1
+        begin_idx = end_idx
+        while begin_idx >= 0 and s[begin_idx] != ' ':
+            begin_idx -= 1
+        return end_idx - begin_idx
