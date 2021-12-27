@@ -13,7 +13,7 @@ Input: nums = [1,0,1,1,0,1]
 Output: 2
 
 Constraints:
-1 <= nums.length <= 105
+1 <= nums.length <= 10**5
 nums[i] is either 0 or 1.
 
 Note: similar to problem: consecutive characters
@@ -25,8 +25,8 @@ from typing import List
 class Solution:
     def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
         cnt = ans = 0
-        for i in range(len(nums)):
-            if nums[i] == 1:
+        for x in nums:
+            if x:
                 cnt += 1
                 ans = max(cnt, ans)
             else:
