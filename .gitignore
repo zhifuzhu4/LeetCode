@@ -3,5 +3,6 @@
 __pycache__/
 temp/
 venv/
+fun/
 try_ideas.py
 try_solution.py
