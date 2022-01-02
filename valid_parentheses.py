@@ -60,4 +60,4 @@ class Solution:
                 stack.append(x)
             elif len(stack) == 0 or d[stack.pop()] != x:  # 2
                 return False
-        return len(stack) == 0  # 3
+        return len(stack) == 0  # 3, or stack == []
