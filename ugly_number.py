@@ -45,9 +45,4 @@ class Solution:
         return n == 1
 
     def isUgly2(self, n: int) -> bool:
-        if n <= 0:
-            return False
-        elif n == 1:
-            return True
-        else:
-            return (2 * 3 * 5) ** 31 % n == 0
+        return n >= 1 and (2 * 3 * 5) ** 31 % n == 0
