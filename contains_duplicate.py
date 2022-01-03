@@ -29,10 +29,9 @@ class Solution:
         return len(nums) != len(set(nums))
 
     def containsDuplicate2(self, nums: List[int]) -> bool:
-        freq = {}
+        d = {}
         for x in nums:
-            if x not in freq:
-                freq[x] = 1
-            else:
-                freq[x] += 1
-        return max(freq.values()) > 1
+            d[x] = d.get(x, 0) + 1
+            if d[x] > 1:
+                return True
+        return False
