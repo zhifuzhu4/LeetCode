@@ -34,3 +34,7 @@ class Solution:
     def isPowerOfThree2(self, n: int) -> bool:
         # 3**20 > 2**31
         return n > 0 and 3 ** 20 % n == 0
+
+    def isPowerOfThree3(self, n: int) -> bool:
+        nums = [3**x for x in range(21)]
+        return n in nums
