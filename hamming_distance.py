@@ -37,7 +37,8 @@ class Solution:
     def hammingDistance2(self, x: int, y: int) -> int:
         xor = x ^ y
         cnt = 0
-        for _ in range(32):
+        # for _ in range(32):
+        while xor:
             cnt += xor & 1
             xor = xor >> 1
         return cnt
