@@ -24,12 +24,12 @@ s consists of only lowercase English letters.
 
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        s_ct = {}
+        d = {}
         for x in s:
-            s_ct[x] = s_ct.get(x, 0) + 1
+            d[x] = d.get(x, 0) + 1
         # s_ct = collections.Counter(s)
 
         for i, c in enumerate(s):
-            if s_ct[c] == 1:
+            if d[c] == 1:
                 return i
         return -1
