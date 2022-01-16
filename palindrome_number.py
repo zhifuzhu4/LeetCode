@@ -25,7 +25,7 @@ Input: x = -101
 Output: false
 
 Constraints:
--231 <= x <= 231 - 1
+-2**31 <= x <= 2**31 - 1
 
 Follow up: Could you solve it without converting the integer to a string?
 
@@ -39,17 +39,33 @@ class Solution:
             return False
         # the above two lines just to make the function more efficient.
         # Not essential since it's covered by the code below
+
+        # [::-1] works for: string, list, and tuple
+        # e.g., 'abc'[::-1] -> 'cba',
+        # [1, 2, 3][::-1] -> [3, 2, 1]
+        # (1, 2, 3)[::-1] -> (3, 2, 1)
         return str(x) == str(x)[::-1]
 
-
-class Solution2:
-    def isPalindrome(self, x: int) -> bool:
+    def isPalindrome2(self, x: int) -> bool:
+        # reverse the number first and see if it is equal to the original number
         if x < 0:
             return False
+        orig_x = x
+        rev = 0
+        while x:
+            rev = rev * 10 + x % 10
+            x //= 10
+        return rev == orig_x
 
-        rst = 0
-        while x > rst:
-            rst = rst * 10 + x % 10
-            x = x // 10
-            print(f'x={x}, rst={rst}')
-        return x == rst or x == rst // 10
+    def isPalindrome3(self, x: int) -> bool:
+        if x < 0:
+            return False
+        x = str(x)
+        i, j = 0, len(x)-1
+        while i < j:
+            if x[i] != x[j]:
+                return False
+            i += 1
+            j -= 1
+            # it's easy to foget the above two lines that causes TLE (Time Limit Exceeded)
+        return True
