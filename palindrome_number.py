@@ -58,6 +58,17 @@ class Solution:
         return rev == orig_x
 
     def isPalindrome3(self, x: int) -> bool:
+        # solution 2 iterates through all digits of x, this solution iterates only half of x
+        if x < 0 or (x > 0 and x % 10 == 0):
+            return False
+        res = 0
+        while x > res:
+            res = res * 10 + x % 10
+            x //= 10
+        return x == res or x == res // 10
+
+    def isPalindrome4(self, x: int) -> bool:
+        # two pointers
         if x < 0:
             return False
         x = str(x)
