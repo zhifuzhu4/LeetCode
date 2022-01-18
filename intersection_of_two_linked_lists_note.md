@@ -18,7 +18,7 @@ We just need to make sure to string headB onto a and vice versa if one (but not 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
         a, b = headA, headB
-        while (a != b):
+        while a is not b:
             a = a.next if a else headB
             b = b.next if b else headA
         return a
