@@ -76,6 +76,7 @@ class Solution:
         """
         try:
             slow, fast = head, head.next
+            # make sure fast = head.next, instead of slow, fast = head, head
             while slow is not fast:
                 slow = slow.next
                 fast = fast.next.next
