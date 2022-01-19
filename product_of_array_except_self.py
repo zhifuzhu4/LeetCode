@@ -60,6 +60,9 @@ class Solution:
 
             We iterate from start and keep calculating prefix product & update corresponding ans[i]
             & at the same time we can calculate keep calculating suffix product from the end & update ans[n-1-i].
+
+            Note that the final result would be product of array except self because
+            we only update & multiply pre with nums[i] after updating ans[i] and similarly for suf.
         """
         res, suf, pre = [1]*len(nums), 1, 1
         for i in range(len(nums)):
