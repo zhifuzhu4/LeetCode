@@ -29,20 +29,17 @@ Explanation: There is no way to make a positive profit, so we never buy the stoc
 
 Constraints:
 1 <= prices.length <= 3 * 104
-0 <= prices[i] <= 104
+0 <= prices[i] <= 10**4
 
 
 
-TODO: there are other solutions using otoom-up DP + iteration or Top down DP + recursion + memoizatio
+TODO: there are other solutions using botoom-up DP + iteration or Top down DP + recursion + memoizatio
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/discuss/803206/PythonGo-O(n)-by-DP-w-Visualization
 
 Note:
 Max profit with single long position on every moment = summation of price gain (buy at low, sell at high)
 Max profit with long position ,'做多' in chinese, is met by collecting all price gain in the stock price sequence.
 Take care that holding multiple position at the same time is NOT allowed by description.
-
-
-
 """
 
 from typing import List
@@ -50,11 +47,18 @@ from typing import List
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
+        profit = 0
+        for i in range(len(prices)-1):
+            if prices[i] < prices[i+1]:
+                profit += prices[i+1] - prices[i]
+        return profit
+
+    def maxProfit2(self, prices: List[int]) -> int:
         profit = []
         for i in range(len(prices)-1):
             if prices[i] < prices[i+1]:
                 profit.append(prices[i+1] - prices[i])
         return sum(profit)
 
-    def maxProfit2(self, prices: List[int]) -> int:
+    def maxProfit3(self, prices: List[int]) -> int:
         return sum((prices[i+1] - prices[i]) for i in range(len(prices)-1) if prices[i+1] > prices[i])
