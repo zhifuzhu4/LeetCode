@@ -27,8 +27,8 @@ Follow up: If you have figured out the O(n) solution,
 try coding another solution using the divide and conquer approach, which is more subtle.
 
 Note:
-If the sum of a subarray is positive, it has possible to make the next value bigger,
-so we keep do it until it turn to negative.
+If the sum of a subarray is positive, it's possible to make the next value bigger,
+so we keep doing it until it turns to negative.
 If the sum is negative, it has no use to the next element, so we break.
 it is a game of sum, not the elements.
 
@@ -58,9 +58,9 @@ class Solution:
                 nums[i] += nums[i-1]
         return max(nums)
 
-    def maxSubArray(self, nums: List[int]) -> int:
-        res = cur = nums[0]
-        for n in nums[1:]:
-            cur = max(cur+n, n)
-            res = max(res, cur)
-        return res
+    def maxSubArray2(self, nums: List[int]) -> int:
+        cur_sum = max_sum = nums[0]
+        for num in nums[1:]:
+            cur_sum = max(cur_sum + num, num)
+            max_sum = max(max_sum, cur_sum)
+        return max_sum
