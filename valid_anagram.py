@@ -25,18 +25,28 @@ all([True, True, True]) -> True
 all([True, True, False]) -> False
 all([]) -> True
 """
+
 import string
-from collections import Counter
+import collections
 
 
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
+        # sorted('adbc') -> ['a', 'b', 'c', 'd']
         if len(s) != len(t):
             return False
         return sorted(s) == sorted(t)
 
     def isAnagram2(self, s: str, t: str) -> bool:
-        return Counter(t) == Counter(s)
+        return collections.Counter(t) == collections.Counter(s)
 
     def isAnagram3(self, s: str, t: str) -> bool:
         return all([s.count(c) == t.count(c) for c in string.ascii_lowercase])
+
+    def isAnagram4(self, s: str, t: str) -> bool:
+        d_s, d_t = {}, {}
+        for c in s:
+            d_s[c] = d_s.get(c, 0) + 1
+        for c in t:
+            d_t[c] = d_t.get(c, 0) + 1
+        return d_s == d_t
