@@ -53,12 +53,33 @@ from typing import List
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
+        """
+        Kadane’s Algorithm is an iterative dynamic programming algorithm.
+        It calculates the maximum sum subarray ending at a particular position by using
+        the maximum sum subarray ending at the previous position.
+        """
         for i in range(1, len(nums)):
             if nums[i-1] > 0:
                 nums[i] += nums[i-1]
         return max(nums)
 
     def maxSubArray2(self, nums: List[int]) -> int:
+        # use dp memoisation table, time O(n), space O(n)
+        n = len(nums)
+        dp = [nums[0]] * n
+        for i in range(1, n):
+            if dp[i-1] > 0:
+                dp[i] = dp[i-1] + nums[i]
+            else:
+                dp[i] = nums[i]
+        # the above if-else can be rewritten as
+        # dp[i] = max(dp[i-1]+nums[i], nums[i])
+        return max(dp)
+
+    def maxSubArray3(self, nums: List[int]) -> int:
+        # time O(n), space O(1)
+        # 1) initilize both variables as nums[0]
+        # 2) iterate from index-1
         cur_sum = max_sum = nums[0]
         for num in nums[1:]:
             cur_sum = max(cur_sum + num, num)
