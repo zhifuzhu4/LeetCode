@@ -37,8 +37,7 @@ class Solution:
 
     def isPalindrome2(self, s: str) -> bool:
         s = "".join(e for e in s if e.isalnum()).lower()
-        i = 0
-        j = len(s) - 1
+        i, j = 0, len(s)-1
         while i < j:
             if s[i] != s[j]:
                 return False
