@@ -17,6 +17,9 @@ Output: -6
 Constraints:
 3 <= nums.length <= 10**4
 -1000 <= nums[i] <= 1000
+
+TODO: study solution for General solution for any K
+https://leetcode.com/problems/maximum-product-of-three-numbers/discuss/128740/General-solution-for-any-K
 """
 
 from typing import List
