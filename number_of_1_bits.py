@@ -47,3 +47,10 @@ class Solution:
             n &= n - 1
             res += 1
         return res
+
+    def hammingWeight3(self, n: int) -> int:
+        cnt = 0
+        while n:
+            cnt += (n & 1)
+            n = n >> 1
+        return cnt
