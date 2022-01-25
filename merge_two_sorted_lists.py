@@ -46,9 +46,9 @@ class Solution:
             else:
                 cur.next = list2
                 list2 = list2.next
-            cur = cur.next
+            cur = cur.next  # do not forget this
         cur.next = list1 or list2
-        return head.next
+        return head.next  # not return head
 
     def mergeTwoLists2(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         # recursively
