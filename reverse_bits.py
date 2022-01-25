@@ -18,8 +18,8 @@ Follow up: If this function is called many times, how would you optimize it?
 class Solution:
     def reverseBits(self, n: int) -> int:
         # bin(8) -> '0b1010', '0b' means it's a binary number
-        bins = bin(n)[2:][::-1]
-        rev = bins + '0' * (32 - len(bins))
+        bins = bin(n)[2:]
+        rev = bins[::-1] + '0' * (32 - len(bins))
         return int(rev, 2)
 
     def reverseBits2(self, n: int) -> int:
