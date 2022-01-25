@@ -45,6 +45,9 @@ class Solution:
         # two pointers
         # fast is moving faster than slow, so it will be the first one to reach the end of linked list
         # if it does not contain cycle. If it reaches the end, while loop is exited and will return False.
+
+        # below if statement is essential to include edge case of []
+        # as the number of nodes can be 0 as stated in constraints.
         if not head:
             return False
 
@@ -83,3 +86,15 @@ class Solution:
             return True
         except:
             return False
+
+        # the version below does not work, e.g., head=[1], and pos = 0
+        # it has a cycle, but since the logic flow will not enter the while loop, True will never be returned
+        # try:
+        #     slow, fast = head, head.next
+        #     while slow is not fast:
+        #         slow = slow.next
+        #         fast = fast.next.next
+        #         if slow is fast:
+        #             return True
+        # except:
+        #     return False
