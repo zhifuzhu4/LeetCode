@@ -27,5 +27,7 @@ class Solution:
         for _ in range(32):
             # the for loop cannot be replaced by while n since the output has to be a string of length 32.
             ans = (ans << 1) + (n & 1)
+            # the above two pairs of parentheses are essential as
+            # bitwise shifts (<<, >>) and bitwise AND (&) have lower precedence than addition (+)
             n >>= 1
         return ans
