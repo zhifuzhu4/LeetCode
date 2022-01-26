@@ -38,3 +38,21 @@ class Solution:
     def missingNumber2(self, nums: List[int]) -> int:
         n = len(nums)
         return int(n * (n + 1) / 2 - sum(nums))
+
+    def missingNumber3(self, nums: List[int]) -> int:
+        return sum(range(len(nums)+1)) - sum(nums)
+
+    def missingNumber4(self, nums: List[int]) -> int:
+        """
+        use XOR
+        n ^ n = 0
+        a ^ b ^ c ^ a ^ b = c
+        so for all elements in [0, n], XOR all elements in nums, the one remaining is the missing one.
+        range(n) contains elements in [0, n-1], so we need to initialize res = n, together we get [0, n]
+        """
+        n = len(nums)
+        res = n
+        for i in range(n):
+            res ^= i
+            res ^= nums[i]
+        return res
