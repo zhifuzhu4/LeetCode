@@ -64,3 +64,14 @@ class Solution:
         while cur:
             cur.next, prev, cur = prev, cur, cur.next
         return prev
+
+    def reverseList3(self, head: Optional[ListNode], prev=None) -> Optional[ListNode]:
+        # recursive
+        if head:
+            nxt = head.next
+            head.next = prev
+            prev = head
+            head = nxt
+            return self.reverseList3(head, prev)
+        else:
+            return prev
