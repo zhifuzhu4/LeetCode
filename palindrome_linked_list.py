@@ -50,7 +50,7 @@ class Solution:
             slow = nxt
 
         # compare the first and second half nodes
-        while rev and head:  # while rev and head:
+        while rev:  # while rev and head:
             if rev.val != head.val:
                 return False
             rev = rev.next
