@@ -44,6 +44,14 @@ class Solution:
         But when we use stack, the order should be reversed:
         right -> root -> left
         https://leetcode.com/problems/binary-tree-inorder-traversal/discuss/1338663/Python%3A-inorder-iterative-stack-(TF-explanation)
+
+
+        https://leetcode.com/problems/binary-tree-inorder-traversal/discuss/1374069/Iterative-solution-(Stack)-in-Python.-Easy-and-fast-(-9989)
+        The rule of Inorder Traversal: For each sub tree, you need visit left child of current root,
+        then save root value, then visit right child of current root, and you MUST always follow this order
+
+        When you visit each children node, if it's a parent of others children, then apply our rule again
+        if it's empty- which mean it's a leaf- then add it to list res
         """
         res, stack = [], [(root, False)]
         while stack:
