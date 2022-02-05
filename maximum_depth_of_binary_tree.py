@@ -60,3 +60,15 @@ class Solution:
             if cur.right:
                 queue.append((cur.right, val+1))
         return val
+
+    def maxDepth4(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        res, level = [], [root]
+        while level:
+            res.append([node.val for node in level])
+            temp = []
+            for node in level:
+                temp.extend([node.left, node.right])
+            level = [leaf for leaf in temp if leaf]
+        return len(res)
