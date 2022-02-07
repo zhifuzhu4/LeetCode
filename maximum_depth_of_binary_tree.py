@@ -31,14 +31,14 @@ class TreeNode:
 
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
+        # one-liner: return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1 if root else 0
         if not root:
             return 0
         return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
 
     def maxDepth2(self, root: Optional[TreeNode]) -> int:
         # DFS
-        res = 0
-        stack = [(root, 0)]
+        res, stack = 0, [(root, 0)]
         while stack:
             node, level = stack.pop()
             if not node:
@@ -54,21 +54,22 @@ class Solution:
             return 0
         queue = collections.deque([(root, 1)])  # here the 2nd number is level
         while queue:
-            cur, val = queue.popleft()
-            if cur.left:
-                queue.append((cur.left, val+1))
-            if cur.right:
-                queue.append((cur.right, val+1))
-        return val
+            node, depth = queue.popleft()
+            if node.left:
+                queue.append((node.left, depth+1))
+            if node.right:
+                queue.append((node.right, depth+1))
+        return depth
 
     def maxDepth4(self, root: Optional[TreeNode]) -> int:
         if not root:
             return 0
-        res, level = [], [root]
-        while level:
-            res.append([node.val for node in level])
-            temp = []
-            for node in level:
-                temp.extend([node.left, node.right])
-            level = [leaf for leaf in temp if leaf]
-        return len(res)
+        res, stack = 0, [(root, 1)]
+        while stack:
+            node, depth = stack.pop()
+            if node.left:
+                stack.append((node.left, depth+1))
+            if node.right:
+                stack.append((node.right, depth+1))
+            res = max(res, depth)
+        return res
