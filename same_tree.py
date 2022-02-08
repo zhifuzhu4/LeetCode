@@ -45,6 +45,8 @@ class Solution:
         while stack:
             node1, node2 = stack.pop()
             if node1 and node2 and node1.val == node2.val:
+                # the order of left and right does not matter, either way works fine
+                # to avoid confusion, use current order so pop works from left to right
                 stack.append((node1.right, node2.right))
                 stack.append((node1.left, node2.left))
             elif not node1 and not node2:
