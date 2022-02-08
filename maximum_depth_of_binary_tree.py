@@ -62,7 +62,10 @@ class Solution:
         return depth
 
     def maxDepth4(self, root: Optional[TreeNode]) -> int:
-        # BFS
+        """
+        The first step to check: if not root is needed since [None] is not [], len([None]) -> 1
+        """
+
         if not root:
             return 0
         depth, level = 0, [root]
