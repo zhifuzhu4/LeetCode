@@ -62,14 +62,14 @@ class Solution:
         return depth
 
     def maxDepth4(self, root: Optional[TreeNode]) -> int:
+        # BFS
         if not root:
             return 0
-        res, stack = 0, [(root, 1)]
-        while stack:
-            node, depth = stack.pop()
-            if node.left:
-                stack.append((node.left, depth+1))
-            if node.right:
-                stack.append((node.right, depth+1))
-            res = max(res, depth)
-        return res
+        depth, level = 0, [root]
+        while level:
+            depth += 1
+            temp = []
+            for node in level:
+                temp.extend([node.left, node.right])
+            level = [leaf for leaf in temp if leaf]
+        return depth
