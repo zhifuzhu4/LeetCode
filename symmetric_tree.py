@@ -30,8 +30,6 @@ class TreeNode:
 
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        if not root:
-            return True
         return self.dfs(root.left, root.right)
 
     def dfs(self, l, r):
@@ -40,15 +38,26 @@ class Solution:
         return l == r
 
     def isSymmetric2(self, root: Optional[TreeNode]) -> bool:
-        if not root:
-            return True
+        """
+        if we define function dfs(l, r) inside isSymmetric(), it's ok to not use self,
+        but the above approach is preferred
+        """
+        def dfs(l, r):
+            if l and r:
+                return l.val == r.val and dfs(l.left, r.right) and dfs(l.right, r.left)
+            return l is r
+        return dfs(root.left, root.right)
+
+    def isSymmetric3(self, root: Optional[TreeNode]) -> bool:
+        # same pattern as problem 100, Same Tree
         stack = [(root.left, root.right)]
         while stack:
-            l, r = stack.pop()
-            if not l and not r:
+            n1, n2 = stack.pop()
+            if n1 and n2 and n1.val == n2.val:
+                stack.append((n1.left, n2.right))
+                stack.append((n1.right, n2.left))
+            elif not n1 and not n2:
                 continue
-            elif not l or not r or (l.val != r.val):
+            else:
                 return False
-            stack.append((l.left, r.right))
-            stack.append((l.right, r.left))
         return True
