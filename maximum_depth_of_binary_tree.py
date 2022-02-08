@@ -49,19 +49,6 @@ class Solution:
         return res
 
     def maxDepth3(self, root: Optional[TreeNode]) -> int:
-        # BFS + deque
-        if not root:
-            return 0
-        queue = collections.deque([(root, 1)])  # here the 2nd number is level
-        while queue:
-            node, depth = queue.popleft()
-            if node.left:
-                queue.append((node.left, depth+1))
-            if node.right:
-                queue.append((node.right, depth+1))
-        return depth
-
-    def maxDepth4(self, root: Optional[TreeNode]) -> int:
         """
         The first step to check: if not root is needed since [None] is not [], len([None]) -> 1
         """
@@ -75,4 +62,17 @@ class Solution:
             for node in level:
                 temp.extend([node.left, node.right])
             level = [leaf for leaf in temp if leaf]
+        return depth
+
+    def maxDepth4(self, root: Optional[TreeNode]) -> int:
+        # BFS + deque
+        if not root:
+            return 0
+        queue = collections.deque([(root, 1)])  # here the 2nd number is level
+        while queue:
+            node, depth = queue.popleft()
+            if node.left:
+                queue.append((node.left, depth+1))
+            if node.right:
+                queue.append((node.right, depth+1))
         return depth
