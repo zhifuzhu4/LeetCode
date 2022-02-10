@@ -31,6 +31,14 @@ class TreeNode:
 
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
+        if not root:
+            return 0
+        if root.left and root.right:
+            return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
+        else:
+            return self.minDepth(root.left or root.right) + 1
+
+    def minDepth2(self, root: Optional[TreeNode]) -> int:
         # recursive
         # if one of the subtrees is None, return the depth of another subtree
         # if no subtree is None, return the minimum depth of the two subtrees
@@ -44,7 +52,7 @@ class Solution:
             return 1 + self.minDepth(root.right)
         return 1 + min(self.minDepth(root.left), self.minDepth(root.right))
 
-    def minDepth2(self, root: Optional[TreeNode]) -> int:
+    def minDepth3(self, root: Optional[TreeNode]) -> int:
         # DFS
         if not root:
             return 0
@@ -58,7 +66,7 @@ class Solution:
                 stack.append((node.right, level+1))
         return res
 
-    def minDepth3(self, root: Optional[TreeNode]) -> int:
+    def minDepth4(self, root: Optional[TreeNode]) -> int:
         # BFS
         if not root:
             return 0
