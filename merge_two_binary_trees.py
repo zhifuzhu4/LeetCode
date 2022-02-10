@@ -51,16 +51,16 @@ class Solution:
             return root1 or root2
         stack = [[root1, root2]]
         while stack:
-            cur = stack.pop()
-            if not cur[0] or not cur[1]:
+            n1, n2 = stack.pop()
+            if not n1 or not n2:
                 continue
-            cur[0].val += cur[1].val
-            if not cur[0].left:
-                cur[0].left = cur[1].left
+            n1.val += n2.val
+            if not n1.left:
+                n1.left = n2.left
             else:
-                stack.append([cur[0].left, cur[1].left])
-            if not cur[0].right:
-                cur[0].right = cur[1].right
+                stack.append([n1.left, n2.left])
+            if not n1.right:
+                n1.right = n2.right
             else:
-                stack.append([cur[0].right, cur[1].right])
+                stack.append([n1.right, n2.right])
         return root1
