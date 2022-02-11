@@ -34,7 +34,14 @@ class TreeNode:
 
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        # DFS inorder: left -> root -> right
+        """
+        DFS inorder: left -> root -> right
+
+        https://leetcode.com/problems/kth-smallest-element-in-a-bst/solution/
+        The recursive inorder traversal:
+        Time complexity : O(N) to build a traversal.
+        Space complexity : O(N) to keep an inorder traversal.
+        """
         return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right) if root else []
 
     def inorderTraversal2(self, root: Optional[TreeNode]) -> List[int]:
