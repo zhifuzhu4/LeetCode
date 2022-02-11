@@ -33,21 +33,22 @@ class TreeNode:
 class Solution:
     def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         # recursive
-        def rec(root):
-            if root:
-                if root.val == val: return root
-                elif root.val < val: return rec(root.right)
-                return rec(root.left)
-        return rec(root)
+        if not root:
+            return None
+        elif root.val == val:
+            return root
+        elif root.val < val:
+            return self.searchBST(root.right, val)
+        else:
+            return self.searchBST(root.left, val)
 
     def searchBST2(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         # iterative
-        temp = root
-        while temp:
-            if temp.val == val:
-                return temp
-            elif temp.val < val:
-                temp = temp.right
+        node = root
+        while node:
+            if node.val == val:
+                return node
+            elif node.val < val:
+                node = node.right
             else:
-                temp = temp.left
-        return None
+                node = node.left
