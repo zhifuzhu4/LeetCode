@@ -41,6 +41,21 @@ class Solution:
         return False
 
     def findTarget2(self, root: Optional[TreeNode], k: int) -> bool:
+        # inorder traversal + two pointers
+        def inorder(node):
+            return inorder(node.left) + [node.val] + inorder(node.right) if node else []
+        lst = inorder(root)
+        i, j = 0, len(lst)-1
+        while i < j:
+            if lst[i] + lst[j] == k:
+                return True
+            elif lst[i] + lst[j] > k:
+                j -= 1
+            else:
+                i += 1
+        return False
+
+    def findTarget3(self, root: Optional[TreeNode], k: int) -> bool:
         # DFS gives us a linear traversal over each node.
         # Only need to keep track of what we've seen and what we need to visit: O(N) time & space.
         stack, seen = [root], set()
@@ -48,9 +63,9 @@ class Solution:
             node = stack.pop()
             if k - node.val in seen:
                 return True
-            seen.add(node.val)
             if node.left:
                 stack.append(node.left)
             if node.right:
                 stack.append(node.right)
+            seen.add(node.val)
         return False
