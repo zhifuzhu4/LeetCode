@@ -45,3 +45,19 @@ class Solution:
         lst = inorder(root)
         res_list = [x for x in lst if low <= x <= high]
         return sum(res_list)
+
+    def rangeSumBST2(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        """
+        We first check if the current root values lies in the range.
+        If it lies in the range we recursively called the left and right node and add the current root's value with it.
+        Since we are given with a BST, if the root's value is greater than the high,
+        we call only the root's left clild node in recursion. Else, we call the root's right child node recusion.
+        """
+        if not root:
+            return 0
+        elif low <= root.val <= high:
+            return root.val + self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high)
+        elif root.val > high:
+            return self.rangeSumBST(root.left, low, high)
+        else:
+            return self.rangeSumBST(root.right, low, high)
