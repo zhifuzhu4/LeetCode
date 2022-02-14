@@ -52,3 +52,4 @@ class Solution:
                 node = node.right
             else:
                 node = node.left
+        return None
