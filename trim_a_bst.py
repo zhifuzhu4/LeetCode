@@ -47,6 +47,7 @@ class Solution:
             return self.trimBST(root.right, low, high)
         elif root.val > high:
             return self.trimBST(root.left, low, high)
-        root.left = self.trimBST(root.left, low, high)
-        root.right = self.trimBST(root.right, low, high)
-        return root
+        else:
+            root.left = self.trimBST(root.left, low, high)
+            root.right = self.trimBST(root.right, low, high)
+            return root
