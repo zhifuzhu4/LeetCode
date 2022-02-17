@@ -52,9 +52,9 @@ Output:
 # Write your MySQL query statement below
 #The OFFSET clause specifies the number of rows to skip before starting to return rows from the query
 # Make a temporary table to account for NULL
-SELECT (
-    SELECT DISTINCT Salary
-FROM EMPLOYEE
-ORDER BY Salary DESC
-LIMIT 1 OFFSET 1
-) AS SecondHighestSalary
+# SELECT (
+#     SELECT DISTINCT Salary
+# FROM EMPLOYEE
+# ORDER BY Salary DESC
+# LIMIT 1 OFFSET 1
+# ) AS SecondHighestSalary
