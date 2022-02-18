@@ -1,7 +1,7 @@
 """
 7. Reverse Integer
-
-Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
+Given a signed 32-bit integer x, return x with its digits reversed.
+If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
 
 Assume the environment does not allow you to store 64-bit integers (signed or unsigned).
 
@@ -25,7 +25,6 @@ Constraints:
 -2**31 <= x <= 2**31 - 1
 """
 
-
 """
 Notes:
 sign = [1,-1][x < 0] is faster, but it's not as clear as sign = 1 if x > 0 else -1
@@ -40,5 +39,5 @@ if bool_val == True, ans <- 'val 1'
 class Solution:
     def reverse(self, x: int) -> int:
         sign = 1 if x > 0 else -1
-        rst = sign * int(str(abs(x))[::-1])
-        return rst if -2**31 < rst < 2**31 - 1 else 0
+        res = sign * int(str(abs(x))[::-1])
+        return res if -2**31 <= res <= 2**31 - 1 else 0
