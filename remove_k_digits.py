@@ -51,4 +51,8 @@ class Solution:
         while k:
             stack.pop()
             k -= 1
-        return ''.join(stack).lstrip('0') if stack else '0'
+        # return ''.join(stack).lstrip('0') if stack else '0' does not work
+        # it will return '' for num = '10' and k = 1 since '0'.lstrip('0') -> ''
+        # OR return ''.join(stack).lstrip('0') or '0' since '' or '0' -> '0'
+        # return str(int(''.join(stack))) if stack else '0'
+        return ''.join(stack).lstrip('0') or '0'
