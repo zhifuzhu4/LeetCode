@@ -48,27 +48,31 @@ s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 """
 
-#TODO: DNF
 
 class Solution:
     def romanToInt(self, s: str) -> int:
         roman = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
-        num = 0
-        for i in range(0, len(s) - 1):
+        res = 0
+        for i in range(len(s) - 1):
             if roman[s[i]] < roman[s[i+1]]:
-                num -= roman[s[i]]
+                res -= roman[s[i]]
             else:
-                num += roman[s[i]]
-        return num + roman[s[-1]]
+                res += roman[s[i]]
+        res += roman[s[-1]]
+        return res
 
     def romanToInt2(self, s: str) -> int:
         roman = {'M': 1000, 'D': 500, 'C': 100, 'L': 50, 'X': 10, 'V': 5, 'I': 1}
         new_roman = {'IV': 'IIII', 'IX': 'VIIII', 'XL': 'XXXX', 'XC': 'LXXXX', 'CD': 'CCCC', 'CM': 'DCCCC'}
-        for key, value in new_roman.items():
-            s = s.replace(key, value)
 
-        total = 0
+        for key in new_roman:
+            s = s.replace(key, new_roman[key])
+
+        # for key, value in new_roman.items():
+        #     s = s.replace(key, value)
+
+        res = 0
         for x in s:
-            total += roman[x]
-        return total
+            res += roman[x]
+        return res
 
