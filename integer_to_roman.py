@@ -52,19 +52,3 @@ class Solution:
             res += (num // i) * d[i]
             num %= i
         return res
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
