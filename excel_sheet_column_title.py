@@ -32,6 +32,7 @@ Constraints:
 
 class Solution:
     def convertToTitle(self, columnNumber: int) -> str:
+        # capitals = [chr(x + ord('A')) for x in range(26)]
         capitals = [chr(x) for x in range(ord('A'), ord('Z')+1)]
         # capitals = string.ascii_uppercase
         # make sure use columnNumber - 1
