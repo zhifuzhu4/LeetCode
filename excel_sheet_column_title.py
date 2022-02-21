@@ -39,6 +39,6 @@ class Solution:
         res = ""
 
         while columnNumber > 0:
-            res = capitals[(columnNumber-1) % 26] + res
+            res = capitals[(columnNumber - 1) % 26] + res
             columnNumber = (columnNumber - 1) // 26
         return res
