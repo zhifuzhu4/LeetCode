@@ -34,6 +34,7 @@ class Solution:
     def convertToTitle(self, columnNumber: int) -> str:
         capitals = [chr(x) for x in range(ord('A'), ord('Z')+1)]
         # capitals = string.ascii_uppercase
+        # make sure use columnNumber - 1
         res = ""
 
         while columnNumber > 0:
