@@ -36,12 +36,10 @@ from typing import List
 class Solution:
     def diagonalSum(self, mat: List[List[int]]) -> int:
         # res = primary diagonal + secondary diagonal - center element when n is odd
-        n = len(mat)
-        mid = n // 2
-
-        res = 0
+        n, res = len(mat), 0
         for i in range(n):
             res += mat[i][i] + mat[i][n-1-i]
         if n % 2:
+            mid = n // 2
             res -= mat[mid][mid]
         return res
