@@ -24,6 +24,7 @@ import collections
 
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
+        # this does not work, e.g, s = 'a', t = 'aa'
         return (set(t) - set(s)).pop()
 
     def findTheDifference2(self, s: str, t: str) -> str:
@@ -63,7 +64,7 @@ class Solution:
         for c in s:
             d[c] = d.get(c, 0) + 1
         for c in t:
+            # if c not in d or d[c] == 0:
             if d.get(c, 0) == 0:
                 return c
-            else:
-                d[c] -= 1
+            d[c] -= 1
