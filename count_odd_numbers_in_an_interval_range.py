@@ -28,4 +28,5 @@ class Solution:
         return (high + 1) // 2 - low // 2
 
     def countOdds3(self, low: int, high: int) -> int:
+        # same logic as solution 2 but bit operation is faster
         return ((high + 1) >> 1) - (low >> 1)
