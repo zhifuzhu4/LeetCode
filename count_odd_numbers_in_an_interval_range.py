@@ -23,3 +23,9 @@ class Solution:
         odd_lb = low if low % 2 else low + 1
         odd_ub = high if high % 2 else high - 1
         return (odd_ub - odd_lb) // 2 + 1
+
+    def countOdds2(self, low: int, high: int) -> int:
+        return (high + 1) // 2 - low // 2
+
+    def countOdds3(self, low: int, high: int) -> int:
+        return ((high + 1) >> 1) - (low >> 1)
