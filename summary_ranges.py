@@ -44,6 +44,6 @@ class Solution:
         nums.append(float('inf'))
         for i in range(len(nums)-1):
             if nums[i+1] != nums[i] + 1:
-                res.append(str(nums[i]) if start == i else str(nums[start]) + '->' + str(nums[i]))
+                res.append(str(nums[start]) + '->' + str(nums[i]) if start != i else str(nums[i]))
                 start = i + 1
         return res
