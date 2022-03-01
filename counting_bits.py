@@ -63,13 +63,20 @@ from typing import List
 
 class Solution:
     def countBits(self, n: int) -> List[int]:
-        res = []
+        res = [0] * (n+1)
         for i in range(n+1):
-            res.append(bin(i).count('1'))
+            res[i] = bin(i).count('1')
         return res
 
     def countBits2(self, n: int) -> List[int]:
-        cnt = [0]
+        cnt = [0] * (n+1)
         for i in range(1, n+1):
-            cnt.append(cnt[i >> 1] + i % 2)
+            cnt[i] = cnt[i // 2] + i % 2
+        return cnt
+
+    def countBits3(self, n: int) -> List[int]:
+        # same as solution 2 but using bit operatoin
+        cnt = [0] * (n+1)
+        for i in range(1, n+1):
+            cnt[i] = cnt[i >> 1] + (i & 1)
         return cnt
