@@ -43,13 +43,33 @@ class Solution:
 
     def isSubsequence2(self, s: str, t: str) -> bool:
         # two pointers
-        if len(s) == 0:
-            return True
-        if len(t) == 0:
-            return False
         i = j = 0
         while i < len(s) and j < len(t):
             if s[i] == t[j]:
                 i += 1
             j += 1
         return i == len(s)
+
+    def isSubsequence3(self, s: str, t: str) -> bool:
+        # str.find(sub, start, end)
+        # Returns the lowest index of the substring if it is found, otherwise, returns -1.
+        start = 0
+        for c in s:
+            ind = t.find(c, start)
+            if ind == -1:
+                return False
+            start = ind + 1
+        return True
+
+    def isSubsequence4(self, s: str, t: str) -> bool:
+        """
+        str.index(str, beg=0 end=len(string))
+        Returns the first position of the substring found. Otherwise, raise an exception.
+        """
+        for c in s:
+            try:
+                ind = t.index(c)
+            except ValueError:
+                return False
+            t = t[ind+1:]
+        return True
